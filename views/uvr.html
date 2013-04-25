@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html><head>
+<title>Matemáticas Financieras UIS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Herramientas matematicas financieras " />
+<meta name="keywords" content="Herramientas matematicas financieras Universidad Industrial de Santander" />
+<meta name="author" content="Gabriel Fernando Neira codigo 2090081; Ruben Hernandez codigo 2090; Universidad Industrial de Santander" />
+<meta name="copyright" content="" />
+<script type="application/javascript" src="../js/jquery.min.js"></script>
+<script type="application/javascript" src="../js/js.js"></script> 
+<script type="application/javascript" src="../js/kickstart.js"></script>                           <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="../css/style.css" media="all" />                         
+<link rel="stylesheet" type="text/css" href="../css/print.css" media="print"> 
+</head><body>
+<!-- Menu Horizontal -->
+<ul class="menu">
+<li class="current"><a href="index.html">Menú</a></li>
+<li><a href="interes.html"><span class="icon" data-icon="R"></span>Interés</a>
+	<ul>
+	<li><a href="interes.html#simple" opcionTab=0><span class="icon" data-icon="G"></span>Simple</a></li>
+	<li><a href="interes.html#compuesto" opcionTab=1><span class="icon" data-icon="A"></span>Compuesto</a></li>
+	</ul>
+</li>
+<li><a href="conversion.html"><span class="icon" data-icon="R"></span>Conversión de tasas</a>
+	<ul>
+	<li><a href="conversion.html#nominal" opcionTab=0><span class="icon" data-icon="G"></span>Nominal a Otras</a></li>
+	<li><a href="conversion.html#efectiva" opcionTab=1><span class="icon" data-icon="A"></span>Efectiva a Nominal</a></li>
+	<li><a href="conversion.html#tabla" opcionTab=2><span class="icon" data-icon="A"></span>Tabla</a></li>
+	</ul>
+</li>
+<li><a href="anualidades.html"><span class="icon" data-icon="R"></span>Anualidades</a>
+	<ul>
+	<li><a href="anualidades.html#anualidades" opcionTab=0><span class="icon" data-icon="G"></span>Anticipadas y Vencidas</a></li>
+	<li><a href="anualidades.html#perpetuas" opcionTab=1><span class="icon" data-icon="A"></span>Perpetuas</a></li>
+	<li><a href="anualidades.html#factores" opcionTab=2><span class="icon" data-icon="A"></span>Tabla de Factores</a></li>
+	</ul>
+</li>
+<li><a href="gradiente.html">Gradientes</a>
+<ul>
+	<li><a href="gradiente.html#aritmetico" opcionTab=0><span class="icon" data-icon="G"></span>Aritmético</a></li>
+	<li><a href="gradiente.html#geometrico" opcionTab=1><span class="icon" data-icon="A"></span>Geométrico</a></li>
+	<li><a href="gradiente.html#perpetuo" opcionTab=2><span class="icon" data-icon="A"></span>Perpetuo</a></li>
+	</ul>
+</li>
+<li><a href="uvr.html">UVR</a>
+<ul>
+	<li><a href="uvr.html#simple" opcionTab=0><span class="icon" data-icon="G"></span>Cálculo Simple</a></li>
+	<li><a href="uvr.html#serie" opcionTab=1><span class="icon" data-icon="A"></span>Cálculo de la Serie</a></li>
+	
+	</ul>
+</li>
+</ul>
+<div class="grid">
+<!-- ===================================== END HEADER ===================================== -->
+
+<script type="application/javascript" src="../js/uvr.js"></script>                           <!-- KICKSTART -->
+	 
+<div class="col_12 column">
+	<h4>Cálculo de Unidad de Valor Real</h4>
+	<ul class="tabs left" id="pestañas">
+		<li class="first current"><a href="#simple">Cálculo Simple</a></li>
+		<li class="last"><a href="#serie">Cálculo de la Serie</a></li>
+	
+	</ul>
+	<!-- ===================================== Primera Pestaña ===================================== -->
+	<div id="simple" class="tab-content clearfix" style="display: block;">
+	
+	<form id="formUvrSimple" name="formUvrSimple" method="post" action="" onsubmit="uvrSimple(); return false;">
+			<table border="0">
+			<tr>
+				<th width="250px">
+				<label for="inflacionAnterior" class="col_12">Inflación Mes Anterior: </label>
+				</th>
+				<th>
+			    <input id="inflacionAnterior" type="text" placeholder="%" required/>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="uvr15Anterior" class="col_12">U.V.R del Día 15 Anterior: </label>
+				</th>
+				<th>
+				<input id="uvr15Anterior" type="text" placeholder="" required />
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="diaSerie" class="col_12">Día de la Serie:</label>
+				</th>
+				<th>
+			    <input id="diaSerie" type="number" min=1 placeholder="" required />
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="totalDias" class="col_12">Total Días Calendario Serie:</label>
+				</th>
+				<th>
+			    <input id="totalDias" type="number" min=28 max=31 required/>
+				</th>
+			</tr>
+			</table>
+			
+		 
+		 <!-- ===================================== Inicio Tabla ===================================== -->
+		<table cellspacing="0" cellpadding="0" border="1" class="sortable" id="tablaUvrSimple">
+			<thead>
+			  <tr>
+				<th scope="col">Dia</th>
+				<th scope="col">U.V.R Día Anterior</th>
+				<th scope="col">U.V.R Calculada</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+			  </tr>
+			  <tr>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+			  </tr>
+			 </tbody>
+			</table>
+			<p>  
+			  <button type="submit" class="green"><i class="icon-play"></i> Calcular </button>
+			  <button type="reset" onclick="limpiarTabla('#tablaUvrSimple')" class="blue"><i class="icon-undo"></i> Limpiar Todo</button>
+			</p>
+		 
+		</form>
+	
+	
+	</div>
+	<div id="serie" class="tab-content clearfix" style="display: block;">
+	
+	<form id="formUvrSerie" name="formUvrSerie" method="post" action="" onsubmit="uvrSerie(); return false;">
+			<table border="0">
+			<tr>
+				<th width="250px">
+				<label for="inflacionAnterior" class="col_12">Inflación Mes Anterior: </label>
+				</th>
+				<th>
+			    <input id="inflacionAnterior" type="text" placeholder="%" required/>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="uvr15Anterior" class="col_12">U.V.R del Día 15 Anterior: </label>
+				</th>
+				<th>
+				<input id="uvr15Anterior" type="text" placeholder="" required />
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="totalDias" class="col_12">Total Días Calendario Serie:</label>
+				</th>
+				<th>
+			    <input id="totalDias" type="number" min=28 max=31 required/>
+				</th>
+			</tr>
+			</table>
+		 <!-- ===================================== Inicio Tabla ===================================== -->
+		<table cellspacing="0" cellpadding="0" border="1" class="sortable" id="tablaUvrSerie">
+			<thead>
+			  <tr>
+				<th scope="col">Dia</th>
+				<th scope="col">U.V.R Día Anterior</th>
+				<th scope="col">U.V.R Calculada</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+			  </tr>
+			  <tr>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+			  </tr>
+			 </tbody>
+			</table>
+			<p>  
+			  <button type="submit" class="green"><i class="icon-play"></i> Calcular </button>
+			  <button type="reset" onclick="limpiarTabla('#tablaUvrSerie')" class="blue"><i class="icon-undo"></i> Limpiar Todo</button>
+			</p>
+		 
+		</form>
+	
+	
+		
+			
+			
+		 
+		 
+		 
+		
+
+	
+	
+	
+
+	
+	
+	</div>
+	<!-- ===================================== Segunda Pestaña ===================================== -->
+	
+	<!-- ===================================== Tercera Pestaña ===================================== -->
+	
+	<!-- Button Bar w/icons -->
+	<ul class="button-bar">
+		<li><a href='javascript:window.print(); void 0;'><i class="icon-file-alt"></i> Imprimir</a></li>
+		<li><a href="javascript:window.open('formulas.html','nueva','width=800,height=500'); void 0;"><i class="icon-beaker"></i>Formulas</a></li>
+		<li><a href="javascript:window.open('ayuda.html','nueva','width=800,height=500'); void 0;"  target="blank"><i class="icon-plus-sign-alt"></i>Ayuda</a></li>
+	</ul>
+	</div>	
+</div><!-- END GRID -->
+<!-- ===================================== START FOOTER ===================================== -->
+<div class="clear"></div>
+<div id="footer">
+&copy; Software prototipo para Ingeniería Económica
+</div>
+</body></html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html><head>
+<title>Matemáticas Financieras UIS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Herramientas matematicas financieras " />
+<meta name="keywords" content="Herramientas matematicas financieras Universidad Industrial de Santander" />
+<meta name="author" content="Gabriel Fernando Neira codigo 2090081; Ruben Hernandez codigo 2090063; Universidad Industrial de Santander" />
+<meta name="copyright" content="" />
+<script type="application/javascript" src="../js/jquery.min.js"></script>
+<script type="application/javascript" src="../js/js.js"></script> 
+<script type="application/javascript" src="../js/kickstart.js"></script>                           <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="../css/style.css" media="all" />                         
+<link rel="stylesheet" type="text/css" href="../css/print.css" media="print"> 
+</head><body>
+<!-- Menu Horizontal -->
+<ul class="menu">
+<li class="current"><a href="index.html">Menú</a></li>
+<li><a href="interes.html"><span class="icon" data-icon="R"></span>Interés</a>
+	<ul>
+	<li><a href="interes.html#simple" opcionTab=0><span class="icon" data-icon="G"></span>Simple</a></li>
+	<li><a href="interes.html#compuesto" opcionTab=1><span class="icon" data-icon="A"></span>Compuesto</a></li>
+	</ul>
+</li>
+<li><a href="conversion.html"><span class="icon" data-icon="R"></span>Conversión de tasas</a>
+	<ul>
+	<li><a href="conversion.html#nominal" opcionTab=0><span class="icon" data-icon="G"></span>Nominal a Otras</a></li>
+	<li><a href="conversion.html#efectiva" opcionTab=1><span class="icon" data-icon="A"></span>Efectiva a Nominal</a></li>
+	<li><a href="conversion.html#tabla" opcionTab=2><span class="icon" data-icon="A"></span>Tabla</a></li>
+	</ul>
+</li>
+<li><a href="anualidades.html"><span class="icon" data-icon="R"></span>Anualidades</a>
+	<ul>
+	<li><a href="anualidades.html#anualidades" opcionTab=0><span class="icon" data-icon="G"></span>Anticipadas y Vencidas</a></li>
+	<li><a href="anualidades.html#perpetuas" opcionTab=1><span class="icon" data-icon="A"></span>Perpetuas</a></li>
+	<li><a href="anualidades.html#factores" opcionTab=2><span class="icon" data-icon="A"></span>Tabla de Factores</a></li>
+	</ul>
+</li>
+<li><a href="gradiente.html">Gradientes</a>
+<ul>
+	<li><a href="gradiente.html#aritmetico" opcionTab=0><span class="icon" data-icon="G"></span>Aritmético</a></li>
+	<li><a href="gradiente.html#geometrico" opcionTab=1><span class="icon" data-icon="A"></span>Geométrico</a></li>
+	<li><a href="gradiente.html#perpetuo" opcionTab=2><span class="icon" data-icon="A"></span>Perpetuo</a></li>
+	</ul>
+</li>
+<li><a href="uvr.html">UVR</a>
+<ul>
+	<li><a href="uvr.html#simple" opcionTab=0><span class="icon" data-icon="G"></span>Cálculo Simple</a></li>
+	<li><a href="uvr.html#serie" opcionTab=1><span class="icon" data-icon="A"></span>Cálculo de la Serie</a></li>
+	
+	</ul>
+</li>
+</ul>
+<div class="grid">
+<!-- ===================================== END HEADER ===================================== -->
+
+<script type="application/javascript" src="../js/interes.js"></script> 	 
+<div class="col_12 column">
+	<h4>Interés Simple y Compuesto</h4>
+	<ul class="tabs left" id="pestañas">
+		<li class="first current"><a href="#simple">Interés Simple</a></li>
+		<li class="last"><a href="#compuesto">Interés Compuesto</a></li>
+	
+	</ul>
+	
+	<div id="simple" class="tab-content clearfix" style="display: none;">
+		<form id="formSimple" name="formSimple" method="post" action="" onsubmit="interesSimple(); return false;">
+			<table border="0">
+			<tr>
+				<th width="200px">
+				<label for="monto" class="col_12">Monto:</label>
+				</th>
+				<th>
+			    <input type="text" name="monto" id="monto" value="0" required/>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="plazo" class="col_12">Plazo:</label>
+				</th>
+				<th>
+				<input type="number" name="plazo" id="plazo" value="0" required />
+				<label for="tipoPlazo"></label>
+				<select name="tipoPlazo" id="tipoPlazo">
+				<option value="1" selected> Meses
+				<option value="12"> Años 
+				</select>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="tasaInteres" class="col_12">Tasa de interés:</label>
+				</th>
+				<th>
+			    <input type="text" id="tasaInteres" name="tasaInteres" placeholder="Nominal Anual" required/>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="pagoInteres" class="col_12">Pago de Interes:</label>
+				</th>
+				<th>
+			    <select name="pagoInteres" id="pagoInteres">
+				<option value="1" selected>Mensual</option>
+				<option value="3">Trimestral</option>
+				<option value="6">Semestral</option>
+				<option value="12">Anual</option>
+				</select>
+				<select name="tipoInteres" id="tipoInteres">
+				<!--<option value="a" >Anticipado</option> -->
+				<option value="v" selected>Vencido</option>
+			  
+			</select>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="amortizacionCapital" class="col_12">Amortizacion a Capital:</label>
+				</th>
+				<th>
+			    <select name="amortizacionCapital" id="amortizacionCapital">
+				<option value="1" selected>Mensual</option>
+				<option value="3">Trimestral</option>
+				<option value="6">Semestral</option>
+				<option value="12">Anual</option>
+				</select>
+				</th>
+			</tr>
+			</table>
+			
+			
+	
+		 
+		 <!-- ===================================== Inicio Tabla ===================================== -->
+		 <table cellspacing="0" cellpadding="0" border="1" class="sortable" id="tablaInteresSimple">
+			<thead>
+			  <tr>
+				<th scope="col">Periodo</th>
+				<th scope="col">Saldo</th>
+				<th scope="col">Interes</th>
+				<th scope="col">Amortizacion</th>
+				<th scope="col">Total</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+			  </tr>
+			  <tr>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+				<td scope="col"></td>
+			  </tr>
+			 </tbody>
+			</table>
+			<p>
+			  
+			  <button type="submit" class="green"><i class="icon-play"></i> Calcular </button>
+			  <button type="reset" onclick="limpiarTabla('#tablaInteresSimple')" class="blue"><i class="icon-undo"></i> Limpiar Todo</button>
+			</p>
+		</form>
+
+	
+	</div>
+	<!-- Fin tab Simple -->
+	<div id="compuesto" class="tab-content clearfix" style="display: none;">
+		<form id="formCompuesto" name="formCompuesto" method="post" action="" onsubmit="interesCompuesto(); return false">
+		
+		<table border="0">
+			<tr>
+				<th width="200px">
+				<label for="valorCalcular" class="col_12">Valor a Calcular: </label>
+				</th>
+				<th>
+			    <select name="valorCalcular" id="valorCalcular">
+				<option value="valorPresente" selected>Valor Presente</option>
+				<option value="valorFuturo">Valor Futuro</option>
+				<option value="tasaInteres">Interés</option>
+				<option value="numeroPeriodos">Periodo</option>
+				</select>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="TipoInteres" class="col_12">Tipo de Interés Compuesto:</label>
+				</th>
+				<th>
+				<select name="tipoInteres" id="tipoInteres">
+				<option value="1" selected>Vencido</option>
+				<option value="2">Anticipado</option>
+				</select>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="valorPresente" class="col_12">Valor Presente en Pesos: </label>
+				</th>
+				<th>
+			    <input type="text" name="valorPresente" id="valorPresente" value="0" readonly="true" class="disabled" required/>
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="valorFuturo" class="col_12">Valor Futuro en Pesos: </label>
+				</th>
+				<th>
+			    <input type="text" name="valorFuturo" id="valorFuturo" value="0" required />
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="tasaInteres" class="col_12">Tasa de interés: </label>
+				</th>
+				<th>
+			    <input type="text" name="tasaInteres" id="tasaInteres" type="text" placeholder="Nominal Anual" />
+				</th>
+			</tr>
+			<tr>
+				<th>
+				<label for="numeroPeriodos" class="col_12">Numero de Periodos: </label>
+				</th>
+				<th>
+			    <input type="number" step="1" name="numeroPeriodos" id="numeroPeriodos" value="0" required />
+				<label for="tipoPeriodos"></label>
+				<select name="tipoPeriodos" id="tipoPeriodos">
+				<option value="1" selected> Meses</option>
+				<option value="12"> Años </option>
+				</select>
+				</th>
+			</tr>
+			</table>
+		
+		
+		
+		
+		
+		
+		 
+		 <!-- ===================================== Inicio Tabla ===================================== -->
+		 <div class="col_3">
+		
+			  <button type="submit" class="green"><i class="icon-play"></i> Calcular</button>
+		 
+		 
+			  <button type="reset"  class="blue"><i class="icon-undo"></i> Limpiar Todo</button>
+		
+		</div>		 
+		
+		</form>
+
+	
+	</div>
+	
+	
+	<!-- Button Bar w/icons -->
+	<ul class="button-bar">
+		<li><a href='javascript:window.print(); void 0;'><i class="icon-file-alt"></i> Imprimir</a></li>
+		<li><a href="javascript:window.open('formulas.html','nueva','width=800,height=500'); void 0;"><i class="icon-beaker"></i>Formulas</a></li>
+		<li><a href="javascript:window.open('ayuda.html','nueva','width=800,height=500'); void 0;"  target="blank"><i class="icon-plus-sign-alt"></i>Ayuda</a></li>
+	</ul>
+	</div>	
+</div><!-- END GRID -->
+<!-- ===================================== START FOOTER ===================================== -->
+<div class="clear"></div>
+<div id="footer">
+&copy; Software prototipo para Ingeniería Económica
+</div>
+</body></html>
